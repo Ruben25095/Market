@@ -16,8 +16,8 @@ export default function home() {
   
 
 
-      {Platform.OS === 'android' &&     <ProductList/>} 
-      {Platform.OS === 'web' &&  <ProductListw/>}
+      {Platform.OS === 'android' ? <ProductList /> : null} 
+      {Platform.OS === 'web' ?  <ProductListw/>: null}
  
         
       

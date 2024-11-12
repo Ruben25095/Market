@@ -6,7 +6,7 @@ import ProductCard from './productcard';
 export default function ProductList(){
  return(
     
-  <FlatList className='w-full p-4'
+  <FlatList className='w-full  p-4'
      numColumns={2}
      data={products}
      keyExtractor={(product)=>product.id}
