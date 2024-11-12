@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "allowJs": true,
     "paths": {
       "@/*": [
         "./*"
@@ -12,6 +13,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+    "expo-env.d.ts",
+    "nativewind-env.d.ts"
+, "app/index.tsx", "components/productcard.jsx", "app/_layout.jsx", "components/productcard.jsx", "components/productList.jsx", "components/products.jsx", "components/top.jsx"  ]
 }
