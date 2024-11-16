@@ -1,15 +1,16 @@
 // components/Header.js
-import { View, TextInput, Image, TouchableOpacity,Platform} from 'react-native';
+import { View, TextInput, Image, TouchableOpacity,Platform,Modal,Button,Text} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Iconb from 'react-native-vector-icons/Entypo';
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { Link,useRouter } from 'expo-router';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
-
+  const [isVisibleModal, setIsVisibleModal] = useState(false);
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
   };
@@ -33,12 +34,34 @@ export default function Header() {
         <TouchableOpacity onPress={toggleVisibility} style={{ marginLeft: 1, padding: 1 }}>
           <Iconb style={{ fontSize: 45 }} name='magnifying-glass' />
           </TouchableOpacity>
-        <TouchableOpacity onPress={()=>{console.log("Haz presionado el carrito")}} style={{ marginLeft:1, padding: 1 }}>
+          
+        <TouchableOpacity onPress={()=>{setIsVisibleModal(true)}}style={{ marginLeft:1, padding: 1 }}>
           <Icon style={{ fontSize: 45 }} name='shoppingcart' />
           </TouchableOpacity>
-       
+          
+          <Modal  transparent={true} visible={isVisibleModal} className=' bg-black-600'  > 
+      
+              <View className=' mt-50 w-full h-full bg-blue-300' > 
+         
+                <View className='items-end' >
+             <TouchableOpacity onPress={()=>{setIsVisibleModal(false)}} style={{ marginLeft:1, padding: 1} }>  
+             <Icon style={{ fontSize:45}} name='close'/> 
+             </TouchableOpacity> 
+             </View>
+              <ScrollView>
 
-        </View>
+
+
+
+
+              </ScrollView>
+
+              </View>
+
+          </Modal>
+        
+
+   </View>
  
       </View>
       {!isVisible && (

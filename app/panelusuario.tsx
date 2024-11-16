@@ -7,7 +7,7 @@ export default function paneluser() {
   return (
     <>
     <View>
-    <Header />
+  
     </View>
     <View>
 
