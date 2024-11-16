@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Text, View,StyleSheet,TextInput,ScrollView,Pressable,SafeAreaView, Touchable,Alert } from "react-native";
+import { Text, View,StyleSheet,TextInput,ScrollView,Pressable,SafeAreaView, Touchable,Alert,Modal,TouchableOpacity } from "react-native";
 import Header from "@/components/top";
 import { Tabs,Link,Stack,Navigator,useRouter  } from 'expo-router';
 import axios from "axios";
+import RegistroUsuario from '../components/registro'
+import Icon2 from 'react-native-vector-icons/AntDesign';
 export default function LoginScreen() {
 
+  const [isVisibleregistro, setIsVisibleregistro] = useState(false);
   
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -72,21 +75,36 @@ export default function LoginScreen() {
       </View>
       <View className="flex-row mt-5 ">
       <Text className="text-white">Primera vez?  </Text> 
-     <Pressable>
+   <TouchableOpacity onPress={()=>{setIsVisibleregistro(true)}}>
      <Text className="text-black">Registrarse</Text> 
-     </Pressable>
+
+     </TouchableOpacity>
      </View>
      <View className="flex-row mt-2 ">
     
     <Text className="text-white">Olvidaste tu contraseña?  </Text> 
-    <Pressable>
+    <Pressable >
     <Text className="text-black">Haz clic aqui</Text> 
     </Pressable>
     </View>
 
 
     </View>
-  
+    
+   <Modal  transparent={true} visible={isVisibleregistro} className=' bg-black-600'  > 
+      
+              <View className=' mt-50 w-full h-full bg-blue-300' > 
+         
+                <View className='items-end' >
+             <TouchableOpacity onPress={()=>{setIsVisibleregistro(false)}} style={{ marginLeft:1, padding: 1} }>  
+             <Icon2 style={{ fontSize:45}} name='close'/> 
+             </TouchableOpacity> 
+             </View>
+             <RegistroUsuario/>
+
+              </View>
+
+          </Modal>
     </View>
    
     
