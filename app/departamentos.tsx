@@ -3,8 +3,9 @@ import Header from '@/components/top'
 export default function departamentos() {
   return (
     <>
+    <Header/>
     <View>
-    <Header />
+   
     </View>
     <View className="justify-start     items-center h-full w-full bg-blue-100 pt-20"  >
       

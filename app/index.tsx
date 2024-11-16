@@ -1,30 +1,16 @@
-import { View, Text, Button,Image,TextInput,StyleSheet,ScrollView,Platform} from 'react-native';
-import Icon from 'react-native-vector-icons/AntDesign';
-import React from 'react';
-//import ProductList from '../..productList/components/productList';
-import Header from '@/components/top'
+import { View, Platform } from 'react-native';
+import Header from '@/components/top';
 import ProductList from '@/components/productList';
-import ProductListw from '@/components/productListw'
-export default function home() {
+import ProductListw from '@/components/productListw';
+
+export default function Home() {
   return (
-   //container
-  
-<>
-    <View>
-        < Header/>
-        </View>
-  
-
-
-      {Platform.OS === 'android' ? <ProductList /> : null} 
-      {Platform.OS === 'web' ?  <ProductListw/>: null}
- 
-        
-      
-    
-    </>
-    
- 
+    <View style={{ flex: 1 }}>
+      <Header />
+      {Platform.select({
+        android: <ProductList />,
+        web: <ProductListw />,
+      })}
+    </View>
   );
 }
-

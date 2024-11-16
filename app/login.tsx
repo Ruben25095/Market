@@ -3,7 +3,6 @@ import { Text, View,StyleSheet,TextInput,ScrollView,Pressable,SafeAreaView, Touc
 import Header from "@/components/top";
 import { Tabs,Link,Stack,Navigator,useRouter  } from 'expo-router';
 import axios from "axios";
-
 export default function LoginScreen() {
 
   
@@ -12,12 +11,12 @@ export default function LoginScreen() {
     const router=useRouter();
     const handleLogin = async () => {
       try {
-        const response = await axios.post("http://192.168.0.10:8000/login", {
+        const response = await axios.post("http://127.0.0.1:8000/login", {
           username,
           password,
         });
         //Alert.alert(response.data.message);
-        router.replace('/login');
+       
         router.push("/panelusuario");
         
       } catch (error) {
@@ -35,7 +34,7 @@ export default function LoginScreen() {
    <>
    
         
-        <Header/>
+      <Header/>
      
         
     <View   className=" justify-start pt-20 items-center w-full h-full bg-gray-600 h-full"  >

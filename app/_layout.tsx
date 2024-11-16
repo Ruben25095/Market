@@ -1,26 +1,26 @@
-import { Tabs,Navigator,Stack  } from 'expo-router';
+import { Tabs, Stack } from 'expo-router';
 import { Platform } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import '../global.css';
 
 export default function RootLayout() {
- 
-  return Platform.OS === 'android' ? <TabLayout /> : <TabLayoutw />;
-
+  return Platform.select({
+    android: <AndroidTabLayout />,
+    web: <WebTabLayout />,
+  });
 }
 
-function TabLayoutw() {
+function WebTabLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="departamentos" options={{ headerShown: false }} />
       <Stack.Screen name="login" options={{ headerShown: false }} />
-
     </Stack>
   );
 }
 
-function TabLayout() {
+function AndroidTabLayout() {
   return (
     <Tabs
       screenOptions={{
@@ -67,7 +67,7 @@ function TabLayout() {
         name="login"
         options={{
           headerShown: false,
-          title: 'login',
+          title: 'Login',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? 'people-circle' : 'people-circle-outline'}
@@ -78,6 +78,5 @@ function TabLayout() {
         }}
       />
     </Tabs>
-
   );
 }
