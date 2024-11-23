@@ -1,10 +1,39 @@
 import React, { useState } from 'react';
 import { View, TextInput, Text, Button, StyleSheet, Alert } from 'react-native';
-
+import axios from "axios";
 const RegistroUsuario = () => {
+
+
+
+    
+    
+    const handleRegister = async () => {
+      try {
+        const response = await axios.post("http://127.0.0.1:8000/register", {
+          username,
+          useremail,
+          password,
+          
+          
+        });
+        Alert.alert(response.data.message);
+       
+        
+        
+      } catch (error) {
+        Alert.alert("Login failed");
+      }
+    };
+
+
+
+
+
+
+
   // Estado para almacenar los valores de los campos
-  const [nombre, setNombre] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [useremail, setUsermail] = useState('');
   const [password, setPassword] = useState('');
 
   // Solo renderizamos el formulario y mostramos los campos sin la lógica de envío
@@ -16,16 +45,16 @@ const RegistroUsuario = () => {
       <TextInput
         style={styles.input}
         placeholder="Nombre completo"
-        value={nombre}
-        onChangeText={setNombre}
+        value={username}
+        onChangeText={setUsername}
       />
 
       {/* Campo de correo electrónico */}
       <TextInput
         style={styles.input}
         placeholder="Correo electrónico"
-        value={email}
-        onChangeText={setEmail}
+        value={useremail}
+        onChangeText={setUsermail}
         keyboardType="email-address"
       />
 
@@ -37,9 +66,17 @@ const RegistroUsuario = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
+         {/* Campo de contraseña */}
+         <TextInput
+        style={styles.input}
+        placeholder="Confirma la Contraseña"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
 
       {/* Botón de registro, sin la lógica asociada */}
-      <Button title="Registrar" onPress={() => {}} />
+      <Button title="Registrar" onPress={handleRegister} />
     </View>
   );
 };
