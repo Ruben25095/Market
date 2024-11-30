@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
-import { View, TextInput, Text, Button, StyleSheet, Alert } from 'react-native';
+import { View, TextInput, Text, Button, StyleSheet, Alert,Platform} from 'react-native';
 import axios from "axios";
 const RegistroUsuario = () => {
 
 
-
+      const validatepassword = () => {
+        if (password !== password2) {
+          if (Platform.OS === 'web') {
+            window.alert("Las contraseñas no coinciden");
+        } else {
+            Alert.alert("Las contraseñas no coinciden");
+        }
+          return false;
+        }
+        
+        handleRegister();
+      };
     
     
     const handleRegister = async () => {
       try {
+      
         const response = await axios.post("http://127.0.0.1:8000/register", {
           username,
           useremail,
@@ -16,12 +28,20 @@ const RegistroUsuario = () => {
           
           
         });
-        Alert.alert(response.data.message);
+        if (Platform.OS === 'web') {
+          window.alert(response.data.message);
+      } else {
+          Alert.alert(response.data.message);
+      }
        
         
         
       } catch (error) {
-        Alert.alert("Login failed");
+        if (Platform.OS === 'web') {
+          window.alert("Error al registrar el usuario");
+      } else {
+          Alert.alert("Error al registrar el usuario");
+      }
       }
     };
 
@@ -35,6 +55,8 @@ const RegistroUsuario = () => {
   const [username, setUsername] = useState('');
   const [useremail, setUsermail] = useState('');
   const [password, setPassword] = useState('');
+  const [password2, setPassword2] = useState('');
+
 
   // Solo renderizamos el formulario y mostramos los campos sin la lógica de envío
   return (
@@ -62,8 +84,8 @@ const RegistroUsuario = () => {
       <TextInput
         style={styles.input}
         placeholder="Contraseña"
-        value={password}
-        onChangeText={setPassword}
+        value={password2}
+        onChangeText={setPassword2}
         secureTextEntry
       />
          {/* Campo de contraseña */}
@@ -74,9 +96,9 @@ const RegistroUsuario = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-
+      
       {/* Botón de registro, sin la lógica asociada */}
-      <Button title="Registrar" onPress={handleRegister} />
+      <Button title="Registrar" onPress={validatepassword} />
     </View>
   );
 };

@@ -77,7 +77,30 @@ function AndroidTabLayout() {
           ),
         }}
       />
+
+<Tabs.Screen
+        name="car_shoping"
+        options={{
+          title: 'Carrito',
+          headerShown: false,
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons
+              name={focused ? 'home-sharp' : 'home-outline'}
+              color={color}
+              size={24}
+            />
+          ),
+        }}
+      />
+
+
+
+
+
+
+
       
     </Tabs>
+    
   );
 }

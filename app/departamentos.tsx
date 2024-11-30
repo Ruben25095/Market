@@ -1,7 +1,7 @@
 import { Text, View,StyleSheet } from "react-native";
 import Header from '@/components/top'
 export default function departamentos() {
-  return (
+  return ( 
     <>
     <Header/>
     <View>

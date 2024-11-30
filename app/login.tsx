@@ -5,21 +5,25 @@ import { Tabs,Link,Stack,Navigator,useRouter  } from 'expo-router';
 import axios from "axios";
 import RegistroUsuario from '../components/registro'
 import Icon2 from 'react-native-vector-icons/AntDesign';
+import { Platform } from 'react-native';
 export default function LoginScreen() {
 
   const [isVisibleregistro, setIsVisibleregistro] = useState(false);
   
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    const [useremail, setUseremail] = useState('');
+    const [password, setPassword] = useState('');
     const router=useRouter();
     const handleLogin = async () => {
       try {
         const response = await axios.post("http://127.0.0.1:8000/login", {
-          username,
+          useremail,
           password,
         });
-        //Alert.alert(response.data.message);
-       
+        if (Platform.OS === 'web') {
+          window.alert(response.data.message);
+      } else {
+          Alert.alert(response.data.message);
+      }
         router.push("/panelusuario");
         
       } catch (error) {
@@ -47,10 +51,10 @@ export default function LoginScreen() {
 
          <Text className='text-white'>Usuario</Text>
          <TextInput
-          placeholder='Uusario'
+          placeholder='Email'
           className='bg-white web:w-5/6  android:w-full  h-1/8 p-3 bg-black-30 border border-blue-300  rounded-3xl mb-4 text-black '
-          value={username}
-          onChangeText={setUsername}
+          value={useremail}
+          onChangeText={setUseremail}
           autoCapitalize="none"
         
         />

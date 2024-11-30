@@ -8,6 +8,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 
 
+
 export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [isVisibleModal, setIsVisibleModal] = useState(false);
@@ -38,28 +39,7 @@ export default function Header() {
         <TouchableOpacity onPress={()=>{setIsVisibleModal(true)}}style={{ marginLeft:1, padding: 1 }}>
           <Icon style={{ fontSize: 45 }} name='shoppingcart' />
           </TouchableOpacity>
-          
-          <Modal  transparent={true} visible={isVisibleModal} className=' bg-black-600'  > 
-      
-              <View className=' mt-50 w-full h-full bg-blue-300' > 
          
-                <View className='items-end' >
-             <TouchableOpacity onPress={()=>{setIsVisibleModal(false)}} style={{ marginLeft:1, padding: 1} }>  
-             <Icon style={{ fontSize:45}} name='close'/> 
-             </TouchableOpacity> 
-             </View>
-              <ScrollView>
-
-
-
-
-
-              </ScrollView>
-
-              </View>
-
-          </Modal>
-        
 
    </View>
  
