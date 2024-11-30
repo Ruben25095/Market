@@ -11,11 +11,11 @@ const [count , setCount]=React.useState(1);
 
 return(
 
-<View className=' flex-1 bg-green-400 m-2 ' > 
- <Image source={{uri: image}  } className=' w-full h-40 web:h-60' style={{ resizeMode:'stretch'}}/> 
+<View className=' flex-1 bg-blue-100' > 
+ <Image source={{uri: image}  } className=' w-full h-40 web:h-80' style={{ resizeMode:'stretch'}}/> 
 
      <Text> {title}</Text>
-     <Text> {price}</Text>
+     <Text>${price.toFixed(2)}</Text>
      <Text> {description}</Text>
      
      </View>
